@@ -1,4 +1,4 @@
-package com.uday.crudapp.runner;
+/*package com.uday.crudapp.runner;
 
 import com.uday.crudapp.entity.Student;
 import com.uday.crudapp.repository.StudentRepository;
@@ -16,4 +16,4 @@ public class DataLoader {
             repository.save(s);
         };
     }
-}
+}*/
