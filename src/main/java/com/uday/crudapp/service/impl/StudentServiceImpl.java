@@ -2,6 +2,8 @@ package com.uday.crudapp.service.impl;
 
 import com.uday.crudapp.entity.Student;
 import com.uday.crudapp.repository.StudentRepository;
+import com.uday.crudapp.exception.ResourceNotFoundException;
+
 import com.uday.crudapp.service.StudentService;
 import org.springframework.stereotype.Service;
 
@@ -28,9 +30,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Optional<Student> getStudentById(Long id) {
-        return studentRepository.findById(id);
+    public Student getStudentById(Long id) {
+        return studentRepository.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Student not found with id: " + id));
     }
+
 
     @Override
     public Student updateStudent(Long id, Student student) {

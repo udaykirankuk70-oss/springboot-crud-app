@@ -1,6 +1,8 @@
 package com.uday.crudapp.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "students")
@@ -10,24 +12,31 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Name is required")
     @Column(nullable = false)
     private String name;
 
+    @Email(message = "Invalid email format")
+    @NotBlank(message = "Email is required")
     @Column(nullable = false, unique = true)
     private String email;
 
+    @NotBlank(message = "Course is required")
+    @Column(nullable = false)
     private String course;
 
-    // Constructors
-    public Student() {}
+    // ✅ Default constructor (MANDATORY for JPA)
+    public Student() {
+    }
 
+    // ✅ Parameterized constructor
     public Student(String name, String email, String course) {
         this.name = name;
         this.email = email;
         this.course = course;
     }
 
-    // Getters & Setters
+    // ✅ Getters & Setters
     public Long getId() {
         return id;
     }

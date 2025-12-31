@@ -1,6 +1,10 @@
 package com.uday.crudapp.controller;
 
 import com.uday.crudapp.entity.Student;
+
+import jakarta.validation.Valid;
+
+
 import com.uday.crudapp.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +23,7 @@ public class StudentController {
 
     // ✅ CREATE
     @PostMapping
-    public Student createStudent(@RequestBody Student student) {
+    public Student createStudent(@Valid @RequestBody Student student) {
         return studentService.saveStudent(student);
     }
 
