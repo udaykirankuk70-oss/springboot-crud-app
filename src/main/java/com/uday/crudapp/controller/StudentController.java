@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/students")
+@RequestMapping("/studentsController")
 public class StudentController {
 
     private final StudentService studentService;
@@ -22,13 +22,13 @@ public class StudentController {
     }
 
     // ✅ CREATE
-    @PostMapping
+    @PostMapping("/createStudent")
     public Student createStudent(@Valid @RequestBody Student student) {
         return studentService.saveStudent(student);
     }
 
     // ✅ READ ALL
-    @GetMapping
+    @GetMapping("/getStudent")
     public List<Student> getAllStudents() {
         return studentService.getAllStudents();
     }

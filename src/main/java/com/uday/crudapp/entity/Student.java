@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "students")
+@Table(name = "students") // use lowercase table names (best practice)
 public class Student {
 
     @Id
@@ -13,19 +13,19 @@ public class Student {
     private Long id;
 
     @NotBlank(message = "Name is required")
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String name;
 
-    @Email(message = "Invalid email format")
     @NotBlank(message = "Email is required")
-    @Column(nullable = false, unique = true)
+    @Email(message = "Invalid email format")
+    @Column(nullable = false, unique = true, length = 150)
     private String email;
 
     @NotBlank(message = "Course is required")
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String course;
 
-    // ✅ Default constructor (MANDATORY for JPA)
+    // ✅ Mandatory default constructor for JPA
     public Student() {
     }
 
@@ -36,7 +36,7 @@ public class Student {
         this.course = course;
     }
 
-    // ✅ Getters & Setters
+    // ✅ Getters and Setters
     public Long getId() {
         return id;
     }
